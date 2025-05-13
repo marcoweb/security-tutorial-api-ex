@@ -1,0 +1,3 @@
+@url = https://glowing-journey-xr5447xjxp297vr-8080.app.github.dev
+
+GET {{url}}/docs

@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 import application.record.CategoriaDTO;
 import application.service.CategoriaService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@Tag(name = "Categorias")
 @RestController
 @RequestMapping("/categorias")
 public class CategoriaController {
@@ -21,6 +27,14 @@ public class CategoriaController {
         return categoriaService.getAll();
     }
 
+
+    @Operation(summary = "Cria uma nova categoria",
+        description = "Retorna o objeto categoria criado",
+        deprecated = false)
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "403", description = "Acesso Não Autorizado"),
+        @ApiResponse(responseCode = "200", description = "Categoria Criada Com Sucesso")
+    })
     @PostMapping
     public CategoriaDTO insert(@RequestBody CategoriaDTO categoria) {
         return categoriaService.insert(categoria);
